@@ -3,14 +3,13 @@ import { NavLink } from "react-router-dom";
 import {FaBars} from "react-icons/fa";
 import {GrClose} from "react-icons/gr";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import './Header.css'
 
 const Header = () => {
     const[isOpen,setIsOpen] = useState(false);
-    const handleMenuBar=()=>{
-        setIsOpen(!isOpen);
-    }
+    
   return (
-   <div className="fixed w-full flex justify-between p-2 items-center bg-blue-400">
+   <div className="fixed w-full flex justify-between p-2 items-center menu">
        <div className="text-2xl font-bold text-center uppercase">
            <h2>M.<span className="block  bg-slate-300">Stock</span></h2>
        </div>
@@ -20,7 +19,7 @@ const Header = () => {
                {isOpen ? <GrClose/>:<FaBars/>}
                </span>
            </div>
-           <ul className={`hidden md:flex gap-4 uppercase p-2 bg-slate-500 `}>
+           <ul className={`hidden md:flex gap-4 uppercase p-2 bg-slate-200 rounded`}>
                <li><NavLink to={"/"}>Home</NavLink></li>
                <li><NavLink to={"/"}>Home</NavLink></li>
                <li><NavLink to={"/"}>Home</NavLink></li>
