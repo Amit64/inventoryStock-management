@@ -1,10 +1,31 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+    const navigate = useNavigate();
+    const navigateLogin = () => {
+        navigate("/login");
+      };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
     return (
-        <div>
-            <h2>This is sign up</h2>
+        <div className="bg-cyan-500  content-container">
+      <div className="w-80 mx-auto pt-80  drop-shadow-lg">
+        <div className="bg-white max-w-sm p-12 rounded">
+            <h2 className="text-center mb-2 text-sm uppercase">Please Signup</h2>
+          <form onSubmit={handleSubmit}>
+            <input className='w-full border mb-2 p-2' type="text" placeholder='name' />
+            <input className="w-full border mb-2 p-2" type="password" placeholder="password" />
+            <input className="w-full border mb-2 p-2" type="email" placeholder="email address" />
+            <button className=" bg-purple-500 w-full text-white mb-2 p-2"><input type="submit" value="Login" /></button>
+            <p className="text-sm">
+              Already registered? <Link className=' text-purple-800' to="/login" onClick={()=>navigateLogin}>Sign In</Link>
+            </p>
+          </form>
         </div>
+      </div>
+    </div>
     );
 };
 
