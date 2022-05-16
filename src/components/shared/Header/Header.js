@@ -4,11 +4,15 @@ import {FaBars} from "react-icons/fa";
 import {AiOutlineClose} from "react-icons/ai";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import MCARE from "../../../Assets/Images/MCARE.png";
+import { signOut } from "firebase/auth";
 
 import './Header.css'
+import auth from "../../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Header = () => {
     const[isOpen,setIsOpen] = useState(false);
+    const [user, loading, error] = useAuthState(auth);
     
   return (
    <div className="fixed w-full flex justify-between p-2 items-center bg-slate-100 shadow-lg z-40">
@@ -25,7 +29,10 @@ const Header = () => {
                <li><NavLink to={"/home"}>Home</NavLink></li>
                <li><NavLink to={"/inventory"}>Inventory</NavLink></li>
                <li><NavLink to={"/about"}>About</NavLink></li>
-               <li><NavLink to={"/login"}>Login</NavLink></li>
+               {
+                   !user? (<><li><NavLink to={"/login"}>LogIn</NavLink></li></>):
+                   (<><li><button onClick={()=>signOut(auth)}>LogOut</button></li></>)
+               }
            </ul>
            <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen}/>
        </nav>

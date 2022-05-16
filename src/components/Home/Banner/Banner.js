@@ -1,5 +1,4 @@
 import React from 'react';
-import HeroBg from '../../../Assets/Images/hero-bg-ts.png'
 import Lottie from 'react-lottie';
 import HeroAnim from '../../../Assets/Lottie/HeroAnim.json'
 
