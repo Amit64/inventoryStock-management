@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const SignUp = () => {
     const [
@@ -37,15 +38,16 @@ const SignUp = () => {
         <div className=" w-80 bg-white p-12 rounded">
             <h2 className="text-center mb-2 text-sm uppercase">Please Signup</h2>
           <form onSubmit={handleSubmit}>
-            <input className='w-full border mb-2 p-2' type="text" name='name' placeholder='name' />
-            <input className="w-full border mb-2 p-2" name='password' type="password" placeholder="password" />
-            <input className="w-full border mb-2 p-2" type="email" name='email' placeholder="email address" />
+            <input className='w-full border mb-2 p-2' type="text" name='name' placeholder='name' required />
+            <input className="w-full border mb-2 p-2" name='password' type="password" placeholder="password" required />
+            <input className="w-full border mb-2 p-2" type="email" name='email' placeholder="email address" required />
             <input className='bg-purple-500 w-full text-white mb-2 p-2' type="submit" value="Sign Up" />
             <p className="text-sm">
               Already registered? <Link className=' text-purple-800' to="/login" onClick={()=>navigateLogin}>Sign In</Link>
             </p>
           </form>
         </div>
+        <SocialLogin/>
       </div>
     </div>
     );
