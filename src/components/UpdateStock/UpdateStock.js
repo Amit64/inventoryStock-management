@@ -9,17 +9,16 @@ const UpdateStock = () => {
   const[product,setProduct] = useState({});
   useEffect(()=>{
       const url =`http://localhost:3006/product/${productId}`
-    fetch(url)
-    .then(res => res.json())
-    .then(data => setProduct(data))
-},[product])
-
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setProduct(data))
+    },[product])
 
     const handleDelivered= ()=>{
             
         const quantity = product.quantity;
-        console.log("updating...",{quantity});
-        fetch(`http://localhost:3006/product/${productId}`, {
+        
+        fetch(`http://localhost:3006/product-delever/${productId}`, {
         method: 'PUT',
         body: JSON.stringify({
         quantity
@@ -35,10 +34,13 @@ const UpdateStock = () => {
           
     }
     const onSubmit = data => {
-        const url = ``
+        const currentStock = product.quantity;
+        const newStock = currentStock + data.quantity;
+        const stock = {quantity: newStock}
+        const url = `http://localhost:3006/product-restock/${productId}`
       fetch(url, {
-          method: 'POST',
-          body: JSON.stringify(data),
+          method: 'PUT',
+          body: JSON.stringify(stock),
           headers: {
             'Content-type': 'application/json; charset=UTF-8',
           },
@@ -91,11 +93,12 @@ const UpdateStock = () => {
               className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               {...register("quantity", { required: true,valueAsNumber: true})}
             />
+            
+            <input className="w-full mt-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" type="submit" value="Add Stock" />
+            
             </form>
           </div>
-          <button className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-            Add Stock
-          </button>
+          
           <p className="text-xs text-gray-500 mt-3">
             Literally you probably haven't heard of them jean shorts.
           </p>

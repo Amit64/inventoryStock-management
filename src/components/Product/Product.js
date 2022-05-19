@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Product = ({product}) => {
     const navigate = useNavigate();
@@ -21,6 +21,7 @@ const Product = ({product}) => {
                 <p className="mt-1">price {price}</p>
                 <button onClick={()=>navigateUpdateStock(_id)} className="btn btn-primary bg-purple-400 p-2 rounded">Update</button>
               </div>
+                            
             </div>
     );
 };
