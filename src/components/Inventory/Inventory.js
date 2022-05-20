@@ -7,7 +7,16 @@ const Inventory = () => {
         fetch('http://localhost:3006/products')
         .then(res => res.json())
         .then(data => setProducts(data))
-    },[])
+    },[products])
+    
+    const deleteStock = id =>{
+    
+        const url =`http://localhost:3006/delete-stock/${id}`;
+        fetch(url, {
+          method: 'DELETE',
+        })
+        
+       }
     return (
         <section className="text-gray-600 body-font content-container">
         <div className="container px-5 py-24 mx-auto">
@@ -16,6 +25,7 @@ const Inventory = () => {
              products && products.map(product =><Product
                 key={product._id}
                 product={product}
+                deleteStock={deleteStock}
              ></Product>)
          }
         </div>

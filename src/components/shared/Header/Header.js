@@ -31,7 +31,10 @@ const Header = () => {
                <li><NavLink to={"/about"}>About</NavLink></li>
                {
                    !user? (<><li><NavLink to={"/login"}>LogIn</NavLink></li></>):
-                   (<><li><button onClick={()=>signOut(auth)}>LogOut</button></li></>)
+                   (<><li><NavLink to={"/manageitem"}>Manage Items</NavLink></li>
+                   <li><NavLink to={"/additem"}>Add Item</NavLink></li>
+                   <li><NavLink to={"/myitem"}>My Item</NavLink></li>
+                   <li><button onClick={()=>signOut(auth)}>LogOut</button></li></>)
                }
            </ul>
            <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen}/>

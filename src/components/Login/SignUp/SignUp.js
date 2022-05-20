@@ -16,11 +16,14 @@ const SignUp = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    let from = location.state?.from?.pathname || '/';
-
+    let from = location.state?.from?.pathname || '/home';
+    if(user1){
+      navigate(from,{replace:true});
+    }
     const navigateLogin = () => {
         navigate("/login");
       };
+      
     const handleSubmit = async (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -28,9 +31,7 @@ const SignUp = () => {
         const password = e.target.password.value;
         await createUserWithEmailAndPassword(email,password);
         await updateProfile({displayName:name});
-        if(user1){
-          navigate(from,{replace:true});
-        }
+       
     };
     return (
         <div className=" bg-cyan-500  content-container">

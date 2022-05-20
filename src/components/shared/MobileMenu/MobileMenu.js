@@ -16,7 +16,10 @@ const MobileMenu = ({isOpen,setIsOpen}) => {
                
                {
                    !user?(<><li><NavLink to={"/login"}>Login</NavLink></li></>):
-                   (<><button onClick={()=>signOut(auth)}>LogOut</button></>)
+                   (<><li><NavLink to={"/manageitem"}>Manage Items</NavLink></li>
+                   <li><NavLink to={"/additem"}>Add Item</NavLink></li>
+                   <li><NavLink to={"/myitem"}>My Item</NavLink></li>
+                   <button onClick={()=>signOut(auth)}>LogOut</button></>)
                }
            </ul>
         </div>
