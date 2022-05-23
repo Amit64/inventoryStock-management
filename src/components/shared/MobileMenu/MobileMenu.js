@@ -8,7 +8,7 @@ const MobileMenu = ({isOpen,setIsOpen}) => {
     const [user, loading, error] = useAuthState(auth);
     return (
         <div>
-            <ul className={`${isOpen?' flex-col flex items-center fixed inset-0 left-1/4 top-20 gap-8 justify-center bg-black/10 backdrop-blur-lg uppercase md:hidden':'hidden'}`}>
+            <ul className={`${isOpen?' flex-col flex items-center fixed inset-0 left-1/4 top-20 gap-8 justify-center bg-black/10 backdrop-blur-lg uppercase text-2xl text-[#C84B31] font-bold md:hidden':'hidden'}`}>
                
                <li><NavLink to={"/"}>Home</NavLink></li>
                <li><NavLink to={"/about"}>Blog</NavLink></li>

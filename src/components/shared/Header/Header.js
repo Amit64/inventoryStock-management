@@ -22,7 +22,7 @@ const Header = () => {
        <nav >
            <div>
                <span className="md:hidden cursor-pointer absolute right-2 scale-150" onClick={()=>setIsOpen(!isOpen)}>
-               {isOpen ? <AiOutlineClose/>:<FaBars />}
+               {isOpen ? <AiOutlineClose className="text-[#C84B31]"/>:<FaBars className=" text-[#C84B31]" />}
                </span>
            </div>
            <ul className={` hidden md:flex gap-4 uppercase p-2 bg-slate-200 rounded`}>
