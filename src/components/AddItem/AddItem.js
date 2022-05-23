@@ -4,12 +4,11 @@ import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import './AddItem.css'
 
 const AddItem = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
-  // const [user1] = useSignInWithGoogle(auth);
-  // console.log(user1);
+ 
     const { register, handleSubmit,reset } = useForm();
     
   const onSubmit = data => {
@@ -32,12 +31,12 @@ const AddItem = () => {
         reset();
   };
     return (
-        <section className='content-container'>
+        <section className='coolbg-form content-container'>
             <div className=" h-screen flex justify-center items-center  drop-shadow-lg">
         <div className=" w-80 bg-white p-12 rounded">
             <h2 className="text-center mb-2 text-sm uppercase">User</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <input className='w-full border mb-2 p-2' value={user?.displayName}  {...register("user")} />
+            <input className='w-full border mb-2 p-2' value={user?.displayName}  {...register("user")}  />
             <input className='w-full border mb-2 p-2' placeholder='Enter email' value={user?.email}  {...register("email")} />
             <label className="text-center mb-2 text-sm uppercase" >Add Stock Item</label>
             <input className='w-full border mb-2 p-2'  placeholder='name' {...register("name", { required: true})} />

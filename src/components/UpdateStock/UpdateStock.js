@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import './UpdateStock.css';
 // https://api.lorem.space/image/movie?w=200&h=280
 
 const UpdateStock = () => {
@@ -51,20 +52,20 @@ const UpdateStock = () => {
     };
 
   return (
-    <section className="text-gray-600 body-font bg-black ">
+    <section className="text-gray-600 body-font coolbg-update ">
       <div className=" lg:h-screen container px-5 py-24 mx-auto flex flex-wrap items-center">
         <div className="lg:w-3/5 md:w-1/2 md:pr-2 lg:pr-0 pr-0">
           <div className="flex flex-col lg:flex-row gap-2 bg-slate-200 shadow-xl p-10">
             <figure className="p-5">
               <img
-                src="https://api.lorem.space/image/movie?w=200&h=280"
+                src={product.img}
                 alt="Movie"
               />
             </figure>
             <div className="w-full">
               <h2 className="text-2xl">{product.name}</h2>
-              <p>Click the button to watch on Jetflix app.</p>
-              <p className="text-xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero error sed illo soluta deserunt? Tenetur assumenda hic aperiam, aliquid, quia nam nemo iusto dolor eius rem a saepe earum recusandae?</p>
+              <p className=" font-bold text-red-500">Price :{product.price}</p>
+              <p className="text-xl">Product Description: {product.description}</p>
               
               <div className="flex justify-between pt-10">
                 <button className=" bg-white text-indigo-600 border-0 py-2 px-8 focus:outline-none hover:bg-slate-100 rounded text-lg">Quantity :{product.quantity}</button>
@@ -100,7 +101,7 @@ const UpdateStock = () => {
           </div>
           
           <p className="text-xs text-gray-500 mt-3">
-            Literally you probably haven't heard of them jean shorts.
+            ***Enter a number value
           </p>
         </div>
       </div>

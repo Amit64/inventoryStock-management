@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useJwt from '../../hooks/useJwt';
 
 const SignUp = () => {
     const [
@@ -12,12 +13,12 @@ const SignUp = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
       const [updateProfile] = useUpdateProfile(auth);
-      const[user1] = useAuthState(auth);
     const navigate = useNavigate();
     const location = useLocation();
+    const [token] = useJwt(user);
 
-    let from = location.state?.from?.pathname || '/home';
-    if(user1){
+    let from = location.state?.from?.pathname || '/';
+    if(token){
       navigate(from,{replace:true});
     }
     const navigateLogin = () => {
@@ -34,7 +35,7 @@ const SignUp = () => {
        
     };
     return (
-        <div className=" bg-cyan-500  content-container">
+        <div className="cool-bg content-container">
       <div className=" h-screen flex justify-center items-center  drop-shadow-lg">
         <div className=" w-80 bg-white p-12 rounded">
             <h2 className="text-center mb-2 text-sm uppercase">Please Signup</h2>

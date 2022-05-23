@@ -15,9 +15,9 @@ const Header = () => {
     const [user, loading, error] = useAuthState(auth);
     
   return (
-   <div className="fixed w-full flex justify-between p-2 items-center bg-slate-100 shadow-lg z-40">
+   <div className="fixed w-full flex justify-between p-2 items-center bg-[#282727] shadow-lg z-40">
        <div className="">
-        <img className=" animate-pulse object-cover w-56 h-16" src={MCARE} alt="m.care" />
+        <img className=" object-cover w-56 h-16" src={MCARE} alt="m.care" />
        </div>
        <nav >
            <div>
@@ -25,17 +25,20 @@ const Header = () => {
                {isOpen ? <AiOutlineClose/>:<FaBars />}
                </span>
            </div>
-           <ul className={`hidden md:flex gap-4 uppercase p-2 bg-slate-200 rounded`}>
+           <ul className={` hidden md:flex gap-4 uppercase p-2 bg-slate-200 rounded`}>
                <li><NavLink to={"/home"}>Home</NavLink></li>
-               <li><NavLink to={"/inventory"}>Inventory</NavLink></li>
+               <li><NavLink to={"/blog"}>Blog</NavLink></li>
                <li><NavLink to={"/about"}>About</NavLink></li>
+               <li><NavLink to={"/inventory"}>Manage Inventory</NavLink></li>
+               
                {
                    !user? (<><li><NavLink to={"/login"}>LogIn</NavLink></li></>):
-                   (<><li><NavLink to={"/manageitem"}>Manage Items</NavLink></li>
+                   (<>
                    <li><NavLink to={"/additem"}>Add Item</NavLink></li>
                    <li><NavLink to={"/myitem"}>My Item</NavLink></li>
                    <li><button onClick={()=>signOut(auth)}>LogOut</button></li></>)
                }
+              
            </ul>
            <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen}/>
        </nav>

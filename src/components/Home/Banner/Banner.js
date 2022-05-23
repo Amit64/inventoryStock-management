@@ -26,8 +26,8 @@ const Banner = () => {
           The website addresses medical equipment inventory management, maintenance, and computerized maintenance management systems.The equipment inventory management system helps in keeping track of inventory that is required while performing equipment maintenance. It lets you know how much inventory is left in the stock so you can plan maintenance accordingly.
           </p>
           <div className="flex justify-center">
-            <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-              Button
+            <button onClick={()=>navigate("/about")} className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              About us
             </button>
             <button onClick={()=>navigate("/manageinventory")} className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
               Manage Inventory

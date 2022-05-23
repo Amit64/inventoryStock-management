@@ -1,20 +1,27 @@
-import axios from "axios";
 import React from "react";
 import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import useJwt from "../../hooks/useJwt";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import './Login.css'
 
-const Login = () => {
+const Login = ({loading1}) => {
   const [
     signInWithEmailAndPassword,
-    user,
+    user1,
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
-    const[user1] = useAuthState(auth);
+    const[user] = useAuthState(auth);
     const navigate = useNavigate();
     const location = useLocation();
+
+    const [token] = useJwt(user);
+
+    if(loading || loading1){
+      return <p>Loading...</p>;
+    }
 
     let errorElement;
     if(error){
@@ -25,9 +32,11 @@ const Login = () => {
     
 
     let from = location.state?.from?.pathname || '/home';
-    if(user1){
-      // navigate(from,{replace:true});
+
+    if(token){
+      navigate(from,{replace:true});
     }
+   
     const navigateSignup =()=>{
         navigate('/signup');
     }
@@ -37,17 +46,13 @@ const Login = () => {
       const email = e.target.email.value;
       const password = e.target.password.value;
       await signInWithEmailAndPassword(email,password);
-      const {data} = await axios.post('http://localhost:3006/login',{email});
-      localStorage.setItem('accessToken',data.accessToken);
-      if(user1){
-        navigate(from,{replace:true});
-      }
-      
   };
 
   return (
-    <div className=" bg-cyan-500  content-container">
+    <div className="cool-bg content-container">
+      
       <div className=" relative h-screen flex justify-center items-center drop-shadow-lg">
+      
         <div className=" w-80 bg-white max-w-sm p-12 rounded">
             <h2 className="text-center mb-2 text-sm uppercase">Please Login</h2>
           <form onSubmit={handleSubmit}>        
@@ -57,6 +62,7 @@ const Login = () => {
             <p className="text-sm">
               Not registered? <Link className=' text-purple-800' to="/signup" onClick={()=>navigateSignup}>Create an account</Link>
             </p>
+            {loading || loading1}
             {errorElement}
           </form>
         </div>
