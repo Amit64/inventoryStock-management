@@ -8,7 +8,7 @@ const useJwt = (user) => {
       const email = user?.email;
       console.log(user.email);
       if (email) {
-        const { data } = await axios.post("http://localhost:3006/login", {
+        const { data } = await axios.post("https://mcare-inventory.herokuapp.com/login", {
           email,
         });
         setToken(data.accessToken);

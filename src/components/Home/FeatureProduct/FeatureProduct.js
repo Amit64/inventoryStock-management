@@ -7,7 +7,7 @@ const FeatureProduct = () => {
     const navigate = useNavigate();
     const [fetProduct,setFetProduct] = useState([]);
     useEffect(()=>{
-        axios.get('http://localhost:3006/limit-product')
+        axios.get('https://mcare-inventory.herokuapp.com/limit-product')
         .then(res=>{
             const data = res.data;
             setFetProduct(data);

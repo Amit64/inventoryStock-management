@@ -12,7 +12,7 @@ const AddItem = () => {
     const { register, handleSubmit,reset } = useForm();
     
   const onSubmit = data => {
-      const url = `http://localhost:3006/product`
+      const url = `https://mcare-inventory.herokuapp.com/product`
     fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),

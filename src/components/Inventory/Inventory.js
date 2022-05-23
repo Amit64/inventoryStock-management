@@ -13,13 +13,13 @@ const Inventory = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3006/products?page=${page}`)
+    fetch(`https://mcare-inventory.herokuapp.com/products?page=${page}`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [products,page]);
 
   useEffect(()=>{
-    axios.get('http://localhost:3006/product-count')
+    axios.get('https://mcare-inventory.herokuapp.com/product-count')
    .then((res) => {
       const productCount = res?.data?.count;
      //console.log("count product",count);
@@ -34,7 +34,7 @@ const Inventory = () => {
   const deleteStock = (id) => {
     let isExecuted = window.confirm("Are you sure to execute this action?");
     if (isExecuted) {
-      const url = `http://localhost:3006/delete-stock/${id}`;
+      const url = `https://mcare-inventory.herokuapp.com/delete-stock/${id}`;
       fetch(url, {
         method: "DELETE",
       });

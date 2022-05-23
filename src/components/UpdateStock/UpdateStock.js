@@ -9,7 +9,7 @@ const UpdateStock = () => {
   const { productId } = useParams();
   const[product,setProduct] = useState({});
   useEffect(()=>{
-      const url =`http://localhost:3006/product/${productId}`
+      const url =`https://mcare-inventory.herokuapp.com/product/${productId}`
         fetch(url)
         .then(res => res.json())
         .then(data => setProduct(data))
@@ -19,7 +19,7 @@ const UpdateStock = () => {
             
         const quantity = product.quantity;
         
-        fetch(`http://localhost:3006/product-delever/${productId}`, {
+        fetch(`https://mcare-inventory.herokuapp.com/product-delever/${productId}`, {
         method: 'PUT',
         body: JSON.stringify({
         quantity
@@ -38,7 +38,7 @@ const UpdateStock = () => {
         const currentStock = product.quantity;
         const newStock = currentStock + data.quantity;
         const stock = {quantity: newStock}
-        const url = `http://localhost:3006/product-restock/${productId}`
+        const url = `https://mcare-inventory.herokuapp.com/product-restock/${productId}`
       fetch(url, {
           method: 'PUT',
           body: JSON.stringify(stock),

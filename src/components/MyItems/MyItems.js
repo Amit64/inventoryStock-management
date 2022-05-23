@@ -15,7 +15,7 @@ const MyItems = () => {
    const deleteStock = id =>{
     let isExecuted = window.confirm("Are you sure to execute this action?");
      if(isExecuted){
-       const url =`http://localhost:3006/delete-stock/${id}`;
+       const url =`https://mcare-inventory.herokuapp.com/delete-stock/${id}`;
      fetch(url, {
        method: 'DELETE',
      })
@@ -27,7 +27,7 @@ const MyItems = () => {
         
         const getItems = async ()=>{
             const email = user?.email ;
-            const url = `http://localhost:3006/filter-products?email=${email}`;
+            const url = `https://mcare-inventory.herokuapp.com/filter-products?email=${email}`;
             try{
                 const {data} = await axios.get(url,{
                     headers:{
