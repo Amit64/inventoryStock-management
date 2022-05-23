@@ -9,7 +9,7 @@ const Contact = () => {
     const sendEmail = (e) => {
         e.preventDefault();
     
-        emailjs.sendForm('service_mqoguno', 'template_bmjr8hh', form.current, 'jvcfIDTbfP4L8Tzd7')
+        emailjs.sendForm('process.env.REACT_APP_serviceId', 'process.env.REACT_APP_templateId', form.current, 'process.env.REACT_APP_publicKey')
           .then((result) => {
               console.log(result.text);
           }, (error) => {
@@ -24,7 +24,7 @@ const Contact = () => {
         <form ref={form} onSubmit={sendEmail} >
       <div className="container px-5 py-24 mx-auto ">
         <div className="flex flex-col text-center w-full mb-12 ">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 text-white">
             Contact Us
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-white">
@@ -38,7 +38,7 @@ const Contact = () => {
             <div className="p-2 w-1/2">
             
             <div className="relative">
-              <label for="name" className="leading-7 text-sm text-gray-600">
+              <label for="name" className="leading-7 text-sm text-white">
                   Name
                 </label>
                 <input
@@ -52,7 +52,7 @@ const Contact = () => {
 
             <div className="p-2 w-1/2">
               <div className="relative">
-                <label for="email" className="leading-7 text-sm text-gray-600">
+                <label for="email" className="leading-7 text-sm text-white">
                   Email
                 </label>
                 <input
@@ -69,7 +69,7 @@ const Contact = () => {
               <div className="relative">
                 <label
                   for="message"
-                  className="leading-7 text-sm text-gray-600"
+                  className="leading-7 text-sm text-white"
                 >
                   Message
                 </label>
