@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {FaBars} from "react-icons/fa";
 import {AiOutlineClose} from "react-icons/ai";
 import MobileMenu from "../MobileMenu/MobileMenu";
@@ -17,7 +17,8 @@ const Header = () => {
   return (
    <div className="fixed w-full flex justify-between p-2 items-center bg-[#282727] shadow-lg z-40">
        <div className="">
-        <img className=" object-cover w-56 h-16" src={MCARE} alt="m.care" />
+           <Link to="/"><img className=" object-cover w-56 h-16" src={MCARE} alt="m.care" /></Link>
+        
        </div>
        <nav >
            <div>

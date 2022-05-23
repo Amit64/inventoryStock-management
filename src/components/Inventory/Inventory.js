@@ -27,8 +27,6 @@ const Inventory = () => {
      const pages = Math.ceil(productCount/6);
      setPageCount(pages);
    })
-   
-
      
  },[page])
 
