@@ -6,7 +6,7 @@ const useJwt = (user) => {
   useEffect(() => {
     const getToken = async () => {
       const email = user?.email;
-      console.log(user.email);
+      //console.log(user.email);
       if (email) {
         const { data } = await axios.post("https://mcare-inventory.herokuapp.com/login", {
           email,

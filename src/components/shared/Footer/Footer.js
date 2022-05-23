@@ -16,7 +16,7 @@ const Footer = () => {
             
           </Link>
           <p className="mt-2 text-sm text-[#ECDBBA]">
-            Air plant banjo lyft occupy retro adaptogen indego
+          Increase your sales and keep track of every unit with our powerful stock management
           </p>
         </div>
         <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">

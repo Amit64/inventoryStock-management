@@ -1,19 +1,20 @@
-import React,{useRef, useState} from "react";
-import { Link } from "react-router-dom";
+import React,{useRef} from "react";
 import emailjs from '@emailjs/browser';
 import './Contact.css'
+import { toast } from "react-toastify";
 
 const Contact = () => {
-    const [result,setResult] = useState(false);   
+      
     const form = useRef();
     const sendEmail = (e) => {
         e.preventDefault();
     
-        emailjs.sendForm('process.env.REACT_APP_serviceId', 'process.env.REACT_APP_templateId', form.current, 'process.env.REACT_APP_publicKey')
+        emailjs.sendForm(process.env.REACT_APP_serviceId, process.env.REACT_APP_templateId, form.current, process.env.REACT_APP_publicKey)
           .then((result) => {
-              console.log(result.text);
+              if(result.text === "OK")
+              toast("Email sending successful");
           }, (error) => {
-              console.log(error.text);
+              console.log('from',error);
           });
           e.target.reset();
       };

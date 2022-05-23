@@ -7,8 +7,9 @@ import './Inventory.css'
 const Inventory = () => {
   const [products, setProducts] = useState([]);
   const [pageCount,setPageCount] = useState(0);
-  const [page,setPage] = useState();
-  const navigate = useNavigate()
+  //console.log(pageCount);
+  const [page,setPage] = useState(0);
+  const navigate = useNavigate();
 
 
 
@@ -23,7 +24,7 @@ const Inventory = () => {
    .then((res) => {
       const productCount = res?.data?.count;
      //console.log("count product",count);
-     const pages = Math.ceil(productCount/5);
+     const pages = Math.ceil(productCount/6);
      setPageCount(pages);
    })
    
@@ -84,22 +85,24 @@ const Inventory = () => {
                     deleteStock={deleteStock}
                   ></Product>
                 ))}
-                <div className="pagination">
+                
+                
+            </tbody>
+          </table>
+        </div>
+        <div className="flex flex-col text-center w-full ">
+        <div className="pagination">
                 {
                     [...Array(pageCount).keys()]
-                    .map(number => <button className={page===number? 'selected': 'pagination'}
+                    .map(number => <button key={number} className={page===number? 'selected': 'pagination'}
                       onClick={()=> setPage(number)}
                     >
                       {number+1}
                     </button>)
                   }
                   
-                </div>
-                
-            </tbody>
-          </table>
+         </div>
         </div>
-
       </div>
     </section>
   );
